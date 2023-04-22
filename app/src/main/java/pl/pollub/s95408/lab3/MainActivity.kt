@@ -1,22 +1,19 @@
 package pl.pollub.s95408.lab3
 
 import android.app.Activity
-import android.app.Instrumentation.ActivityResult
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
-import androidx.activity.result.ActivityResultRegistry
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
-import androidx.lifecycle.DefaultLifecycleObserver
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
-    private val newWordActivityRequestCode = 1
     private val phoneViewModel: PhoneViewModel by viewModels {
         PhoneViewModelFactory((application as PhoneApplication).repository)
     }
@@ -56,6 +53,20 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this@MainActivity, NewPhoneActivity::class.java)
             getContent.launch(intent)
         }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == R.id.mainActivityDeleteAllPhones)
+        {
+            phoneViewModel.deleteAll()
+            return true
+        }
+        return super.onOptionsItemSelected(item)
     }
 
 }
