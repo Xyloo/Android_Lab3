@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Lab3</string>
+    <string name="addPhoneActivityDescription">Adding new phones to DB</string>
+    <string name="manufacturerText">Manufacturer</string>
+    <string name="modelText">Model</string>
+    <string name="androidVersionText">Android version</string>
+    <string name="websiteText">Website</string>
+    <string name="saveButton">Save</string>
+    <string name="cancelButton">Cancel</string>
+    <string name="emptyData">Podano niepoprawne dane</string>
+</resources>
