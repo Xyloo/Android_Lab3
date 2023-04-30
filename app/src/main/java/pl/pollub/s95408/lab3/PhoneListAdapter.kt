@@ -1,6 +1,6 @@
 package pl.pollub.s95408.lab3
 
-import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 
-class PhoneListAdapter : ListAdapter<Phone, PhoneListAdapter.PhoneViewHolder>(PhoneComparator())
+class PhoneListAdapter() : ListAdapter<Phone, PhoneListAdapter.PhoneViewHolder>(PhoneComparator())
 {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhoneViewHolder
     {
@@ -20,6 +20,16 @@ class PhoneListAdapter : ListAdapter<Phone, PhoneListAdapter.PhoneViewHolder>(Ph
     {
         val current = getItem(position)
         holder.bind(current.manufacturer, current.model)
+        val intent = Intent(holder.itemView.context, NewPhoneActivity::class.java)
+        intent.putExtra("id", current.id)
+        intent.putExtra("manufacturer", current.manufacturer)
+        intent.putExtra("model", current.model)
+        intent.putExtra("os_version", current.os_version)
+        intent.putExtra("website", current.website)
+        holder.itemView.setOnClickListener {
+            holder.itemView.context.startActivity(intent)
+        }
+
     }
 
     class PhoneViewHolder(itemView: View): RecyclerView.ViewHolder(itemView)

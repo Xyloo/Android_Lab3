@@ -12,6 +12,16 @@ class PhoneRepository(private val phoneDao: PhoneDao) {
     }
 
     @WorkerThread
+    suspend fun update(phone: Phone) {
+        phoneDao.update(phone)
+    }
+
+    @WorkerThread
+    suspend fun delete(phone: Phone) {
+        phoneDao.delete(phone)
+    }
+
+    @WorkerThread
     suspend fun deleteAll() {
         phoneDao.deleteAll()
     }

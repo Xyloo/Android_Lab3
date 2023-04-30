@@ -11,6 +11,14 @@ val allElements : LiveData<List<Phone>> = repository.getAll().asLiveData()
         repository.insert(phone)
     }
 
+    fun update(phone: Phone) = viewModelScope.launch {
+        repository.update(phone)
+    }
+
+    fun delete(phone: Phone) = viewModelScope.launch {
+        repository.delete(phone)
+    }
+
     fun deleteAll() = viewModelScope.launch {
         repository.deleteAll()
     }
