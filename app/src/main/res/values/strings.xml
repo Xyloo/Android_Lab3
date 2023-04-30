@@ -9,4 +9,5 @@
     <string name="cancelButton">Cancel</string>
     <string name="emptyData">Podano niepoprawne dane</string>
     <string name="deleteAllPhones">Usuń wszystkie telefony</string>
+    <string name="deletedPhone">Usunięto</string>
 </resources>
